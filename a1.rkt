@@ -71,4 +71,42 @@
             '()
             ;else
             (cons (cons (car list1) (car list2)) (zip (cdr list1) (cdr list2)))))))
-       
+
+;Problem 7
+(define list-index-ofv
+  (λ (x lst) 
+    (let loop ((lst lst) (index 0))
+    (cond
+      ;if
+      ((empty? lst) "bad-data")
+      ;elif
+      ((eqv? x (car lst)) index)
+      (else
+       (loop (cdr lst) (+ index 1)))))))
+
+;Problem 8
+(define append
+  (λ (ls1 ls2)
+    (if (empty? ls1)
+        ;then
+        ls2
+        ;else
+        (cons (car ls1) (append (cdr ls1) ls2)))))
+
+;Problem 9
+(define reverse
+  (λ (ls)
+    (if (empty? ls)
+        ;then
+        '()
+        ;else
+        (append (reverse (cdr ls)) (list (car ls))))))
+
+;Problem 10
+(define repeat
+  (λ (ls num)
+    ((if (zero? num)
+         ;then
+         '()
+         ;else
+         (cons (append ls ls) (repeat ls (- num 1)))))))
